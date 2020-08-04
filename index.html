@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div  class="pin-generator half-width">
+                    <input id = "random-number" class="form-control" type="text">
+                    <button id = "pin-generator" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div  class="input-section half-width">
+                    <input id ="number" class="form-control" type="text">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div id="seven"class="button">7</div>
+                              <div id="eight" class="button">8</div>
+                              <div id="nine" class="button">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="four" class="button">4</div>
+                              <div id="five" class="button">5</div>
+                              <div id="six" class="button">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="one" class="button">1</div>
+                              <div id="two" class="button">2</div>
+                              <div id="three"class="button">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div id="back" class="button"><</div>
+                                <div id="zero" class="button">0</div>
+                                <div id="clear" class="button">C</div>
+                            </div>
+                            <div>
+                                <button id ="submitted" type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id = "notify-area" class="notify-section">
+            <p id ="pinNotMatched" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="pinMatched" class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+<script>
+     
+     var logBtn = document.getElementById("pin-generator");
+         logBtn.addEventListener("click", function(){
+        var fourDigitsRandom = Math.floor(1000 + Math.random() * 9000);
+        document.getElementById("random-number").value = fourDigitsRandom;
+    })   
+     document.getElementById("seven")
+      .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 7;
+
+  } )
+
+     document.getElementById("eight")
+      .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 8;
+
+  } )
+
+     document.getElementById("nine")
+      .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 9;
+
+  } )
+
+    document.getElementById("four")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 4;
+
+  } )
+
+    document.getElementById("five")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 5;
+
+  } )
+
+    document.getElementById("six")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 6;
+
+  } )
+
+    document.getElementById("one")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 1;
+
+  } )
+
+    document.getElementById("two")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 2;
+
+  } )
+
+    document.getElementById("three")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 3;
+
+  } )
+
+    document.getElementById("zero")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value + 0;
+
+  } )
+
+    document.getElementById("back") 
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value.slice(0, number.value.length -1);
+  } )
+
+    document.getElementById("clear")
+     .addEventListener("click", function(){
+      document.getElementById("number").value = document.getElementById("number").value.slice(0, number.value.length -1000);
+
+  } )
+      var submitArea = document.getElementById('pinNotMatched')
+          submitArea.style.display = "none";
+      var submitArea = document.getElementById('pinMatched')
+          submitArea.style.display = "none";
+
+     document.getElementById("submitted").addEventListener("click", function(){
+         var random = document.getElementById("random-number")
+         var randomValue = random.value;
+
+         var calcNumber = document.getElementById("number");
+         var calcValue = calcNumber.value;
+
+         if (randomValue == calcValue){
+      
+            document.getElementById('pinMatched'). style.display = "block";
+            document.getElementById('pinNotMatched').style.display = "none";
+        }
+        else{
+            document.getElementById('pinNotMatched'). style.display = "block";
+            document.getElementById('pinMatched').style.display = "none";
+
+        }
+   })
+</script>
+
+</body>
+</html>
